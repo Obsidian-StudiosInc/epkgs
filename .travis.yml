@@ -1,0 +1,16 @@
+language: c
+sudo: required
+dist: trusty
+services:
+  - docker
+
+before_install:
+  - docker pull obsidianstudios/efl:latest
+  - docker run -it -d --name efl obsidianstudios/efl:latest bash
+
+script:
+  - docker exec efl ls -l
+  - docker exec efl ls -la /build/
+
+notifications:
+  email: false
